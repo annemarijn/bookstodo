@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Eline
+{% endblock %}
+
+{% block main %}
+<body>
+<div class="navbar">
+    <ul>
+      <li><a href="/">Index</a></li>
+      <li><a href="/Anne">Anne</a></li>
+      <li><a class="active" href="/Eline">Eline</a></li>
+      <li><a href="/Rene">René</a></li>
+      <li><a href="/Stage">Stage</a></li>
+      <li style="float:right"><a href="/" method="post">Load books</a></li>
+      <li style="float:right"><a href="/donebooks">Done</a></li>
+    </ul>
+</div>
+
+<div class="main">
+ <ul id="booklist" style="list-style-type:none">
+        {% for todobook in todobooks %}
+        <li><a href="http://www.google.com/search?q={{ todobook["BOOKINFO"]}}" style="color: #000000;" target="_blank">{{ todobook["BOOKINFO"]}} </a>
+        <a href="{{ url_for('unassign', bookId=todobook["ID"], status="Eline") }}"><span>Unassign &ensp;</span></a>
+        <a href="{{ url_for('done', bookId=todobook["ID"], status="Eline") }}"><span>Done &ensp;</span></a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+
+{% endblock %}

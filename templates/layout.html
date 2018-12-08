@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<style>
+/* Style the list items */
+.main {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.main ul li {
+    cursor: pointer;
+    list-style-type: none;
+    margin: 0;
+    padding: 12px 8px 12px 20px;
+    background: #eee;
+    font-size: 18px;
+    transition: 0.2s;
+}
+
+/* Make sure the book titles don't overlap with the buttons on the right */
+.overflow {
+    max-width: 680px;
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Set odd list items to a different color */
+.main ul li:nth-child(odd) {
+    background: #c0bfbf;
+}
+
+/* Darker color on hover */
+.main ul li:hover {
+    background: #ddd;
+}
+
+
+.main a span {
+    float: right;
+}
+
+
+/* Navbar */
+.navbar {
+    width: 100%;
+}
+
+.navbar ul {
+    list-style-type: none;
+    overflow: hidden;
+    background-color: #333;
+    margin: 0px 0px 0px 25px;
+    padding: 0;
+    width: 1400px;
+    font-size: 18px;
+}
+
+.navbar li {
+    float: left;
+}
+
+.active {
+    background-color: #900C3F ;
+}
+
+.navbar li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.navbar li a:hover {
+    background-color: #111;
+}
+</style>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+        <!-- documentation at http://getbootstrap.com/docs/4.0/, alternative themes at https://bootswatch.com/4-alpha/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" rel="stylesheet"/>
+
+        <title>Books to-do {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <main class="container p-5">
+            {% block main %}{% endblock %}
+        </main>
+
+
+
+    </body>
+
+</html>
