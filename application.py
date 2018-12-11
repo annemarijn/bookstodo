@@ -7,7 +7,7 @@ from cs50 import SQL
 
 app = Flask(__name__)
 
-db = SQL("sqlite:///books.db")
+db = SQL("postgres://rxmzfmfdfdhmgd:900119b2cc9bc05573cc8f5533b7b0e74580483973a2826b42efffaa93c6b792@ec2-79-125-124-30.eu-west-1.compute.amazonaws.com:5432/d2p8nhaos1ib8u")
 
 
 # Main (index) page
