@@ -21,9 +21,9 @@
 <div class="main">
  <ul id="booklist" style="list-style-type:none">
         {% for todobook in todobooks %}
-        <li><a href="http://www.google.com/search?q={{ todobook["BOOKINFO"]}}" style="color: #000000;" target="_blank">{{ todobook["BOOKINFO"]}} </a>
-        <a href="{{ url_for('unassign', bookId=todobook["ID"], status="Eline") }}"><span>Unassign &ensp;</span></a>
-        <a href="{{ url_for('done', bookId=todobook["ID"], status="Eline") }}"><span>Done &ensp;</span></a>
+        <li><a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank">{{ todobook["bookinfo"]}} </a>
+        <a href="{{ url_for('unassign', bookId=todobook["id"], status="Eline") }}"><span>Unassign &ensp;</span></a>
+        <a href="{{ url_for('done', bookId=todobook["id"], status="Eline") }}"><span>Done &ensp;</span></a>
         </li>
         {% endfor %}
     </ul>

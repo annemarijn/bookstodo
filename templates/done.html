@@ -23,8 +23,8 @@
 
  <ul id="booklist" style="list-style-type:none">
         {% for donebook in donebooks %}
-        <li><a href="http://www.google.com/search?q={{ donebook["BOOKINFO"]}}" style="color: #000000;" target="_blank">{{ donebook["BOOKINFO"]}} </a>
-        <a href="{{ url_for('reset', bookId=donebook["ID"]) }}"><span>Set to not done &ensp;</span></a>
+        <li><a href="http://www.google.com/search?q={{ donebook["bookinfo"]}}" style="color: #000000;" target="_blank">{{ donebook["bookinfo"]}} </a>
+        <a href="{{ url_for('reset', bookId=donebook["id"]) }}"><span>Set to not done &ensp;</span></a>
         </li>
         {% endfor %}
     </ul>
