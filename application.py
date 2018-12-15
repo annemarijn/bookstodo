@@ -8,30 +8,31 @@ from cs50 import SQL
 app = Flask(__name__)
 
 db = SQL("postgres://abuaoqsgbmmiin:ab4016489152edd9bb6b0cd82b0779ffd00e176affc1705bcf57d57401c1e0c0@ec2-54-246-117-62.eu-west-1.compute.amazonaws.com:5432/danq2vpuaddmcb")
-
+# db = SQL("sqlite:///books.db")
 
 # Main (index) page
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-
     todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'TODO'")
+    return render_template("index.html", todobooks=todobooks)
 
-    if request.method=="POST":
-        page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2018&order=desc")
-        tree = html.fromstring(page.content)
 
-        boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
+# Load the books
+@app.route("/loadbooks")
+def loadbooks():
+    page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2018&order=desc")
+    tree = html.fromstring(page.content)
 
-        for boekje in boekjes:
-            db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+    boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
-        return redirect("/")
+    for boekje in boekjes:
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    else:
-        return render_template("index.html", todobooks=todobooks)
+    return redirect("/")
+
 
 # Removing books from the to-do list
-@app.route("/done", methods=["GET", "POST"])
+@app.route("/done")
 def done():
     bookId = request.args.get("bookId")
     status = request.args.get("status")
