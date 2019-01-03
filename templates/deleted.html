@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Deleted
+{% endblock %}
+
+{% block main %}
+<body>
+
+<div class="navbar">
+    <ul>
+      <li><a href="/">Index</a></li>
+      <li><a href="/Anne">Anne</a></li>
+      <li><a href="/Eline">Eline</a></li>
+      <li><a href="/Rene">René</a></li>
+      <li><a href="/Stage">Stage</a></li>
+      <li style="float:right"><a class="active" href="/deletedbooks">Deleted</a></li>
+      <li style="float:right"><a href="/donebooks">Done</a></li>
+    </ul>
+</div>
+
+<div class="main">
+
+ <ul id="booklist" style="list-style-type:none">
+        {% for deletedbook in deletedbooks %}
+        <li><a href="http://www.google.com/search?q={{ deletedbook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="doneoverflow">{{ deletedbook["bookinfo"]}} </a>
+        <a href="{{ url_for('reset', bookId=deletedbook["id"], status="delete") }}"><span>Reset &ensp;</span></a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+
+{% endblock %}

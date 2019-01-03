@@ -17,18 +17,18 @@ def index():
     return render_template("index.html", todobooks=todobooks)
 
 
-# Load the books
-@app.route("/loadbooks")
-def loadbooks():
-    page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2018&order=desc")
-    tree = html.fromstring(page.content)
+# Load the books (disabled in January)
+# @app.route("/loadbooks")
+# def loadbooks():
+#   page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2018&order=desc")
+#   tree = html.fromstring(page.content)
 
-    boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
+#   boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
-    for boekje in boekjes:
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+#   for boekje in boekjes:
+#       db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    return redirect("/")
+#   return redirect("/")
 
 
 # Removing books from the to-do list
@@ -92,13 +92,25 @@ def delete():
         db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
         return redirect("/")
 
+@app.route("/deletedbooks")
+def deletedbooks():
+    deletedbooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DELETE'")
+    return render_template("deleted.html", deletedbooks=deletedbooks)
+
 # Reset books to not done
 @app.route("/reset")
 def reset():
     bookId = request.args.get("bookId")
-    db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+    status = request.args.get("status")
 
-    return redirect("/donebooks")
+    if status=="delete":
+        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/deletedbooks")
+
+    else:
+        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/donebooks")
+
 
 # Unassign books
 @app.route("/unassign")
