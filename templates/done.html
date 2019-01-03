@@ -23,8 +23,9 @@
 
  <ul id="booklist" style="list-style-type:none">
         {% for donebook in donebooks %}
-        <li><a href="http://www.google.com/search?q={{ donebook["bookinfo"]}}" style="color: #000000;" target="_blank">{{ donebook["bookinfo"]}} </a>
+        <li><a href="http://www.google.com/search?q={{ donebook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ donebook["bookinfo"]}} </a>
         <a href="{{ url_for('reset', bookId=donebook["id"]) }}"><span>Set to not done &ensp;</span></a>
+        <a href="{{ url_for('delete', bookId=donebook["id"], status="done") }}"><span>Delete &ensp;</span></a>
         </li>
         {% endfor %}
     </ul>
