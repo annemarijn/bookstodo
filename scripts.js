@@ -8,6 +8,7 @@
  *
  * Date: Mon Mar 8 10:00:00 2010 -0500
  */
+/*
 var ScrollSneak = function(prefix, wait) {
     // clean up arguments (allows prefix to be optional - a bit of overkill)
     if (typeof(wait) == 'undefined' && prefix === true) prefix = null, wait = true;
@@ -43,3 +44,4 @@ var ScrollSneak = function(prefix, wait) {
         return true;
     };
 };
+*/
