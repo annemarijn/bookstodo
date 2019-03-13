@@ -114,20 +114,17 @@
             {% block main %}
             {% endblock %}
         </main>
-        <script>
+        <script type="text/javascript">
         $(document).ready(function() {
 
-            // If cookie is set, scroll to the position saved in the cookie.
-            if ( $.cookie("scroll") !== null ) {
-                $(document).scrollTop( $.cookie("scroll") );
+            if ( $.cookie("scroll") != null )
+            {
+                $(window).scrollTop( $.cookie("scroll") );
             }
 
-            // When a button is clicked...
-            $('#submit').on("click", function() {
-
-                // Set a cookie that holds the scroll position.
-                $.cookie("scroll", $(document).scrollTop() );
-
+            $(window).on("scroll", function()
+            {
+                $.cookie("scroll", $(window).scrollTop() );
             });
 
         });
