@@ -6,6 +6,18 @@
 
 {% block main %}
 <head>
+    <script src="/bookstodo/scripts.js">
+            /*!
+            * Scroll Sneak
+            * http://mrcoles.com/scroll-sneak/
+            *
+            * Copyright 2010, Peter Coles
+            * Licensed under the MIT licenses.
+            * http://mrcoles.com/media/mit-license.txt
+            *
+            * Date: Mon Mar 8 10:00:00 2010 -0500
+            */
+    </script>
 </head>
 
 <body>
@@ -23,6 +35,7 @@
 
 <div class="main">
     <ul id="booklist" style="list-style-type:none">
+
         {% for todobook in todobooks %}
         <li>
         <a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ todobook["bookinfo"]}}</class> </a>
@@ -37,6 +50,17 @@
         {% endfor %}
     </ul>
 </div>
+<!-- SCROLL SNEAK JS: you can change `location.hostname` to any unique string or leave it as is -->
+<script>
+/*global ScrollSneak*/
+(function() {
+    var sneaky = new ScrollSneak(location.hostname), booklist = document.getElementById('booklist').getElementsByTagName('li'), i = 0, len = booklist.length;
+    for (; i < len; i++) {
+        booklist[i].onclick = sneaky.sneak;
+    }
+})();
+</script>
+        <!-- END OF SCROLL SNEAK JS -->
 </body>
 
 {% endblock %}
