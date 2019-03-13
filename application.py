@@ -20,10 +20,17 @@ def index():
 # Load the books (disabled in January)
 # @app.route("/loadbooks")
 # def loadbooks():
+#   Linguistlist:
 #   page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2018&order=desc")
 #   tree = html.fromstring(page.content)
-
 #   boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
+
+#   Eastview:
+#   page = requests.get("https://shop.eastview.com/evmail/archiveall?Date=11-27-2018&GroupId=38&Title=Philology%20/%20Linguistics&PageCount=400")
+#   tree = html.fromstring(page.content)
+#   boekjes = tree.xpath('//table/tr/text()')
+
+
 
 #   for boekje in boekjes:
 #       db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
