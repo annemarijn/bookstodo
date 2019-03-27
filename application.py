@@ -43,6 +43,7 @@ def add():
     if request.method == "POST":
         action = "add"
         boekje = request.form.get("boekje")
+        print(boekje)
         if not boekje:
             return apology("Must provide book info", 400)
         db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status="TODO")
