@@ -40,10 +40,9 @@ def index():
 # Adding books manually
 @app.route("/add")
 def add():
-    if request.method == "POST":
-        boekje = request.form.get("boekje")
+    boekje = request.form.get("boekje")
 
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
+    db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
 
     return redirect("/")
 
