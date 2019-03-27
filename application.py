@@ -45,7 +45,7 @@ def add():
         boekje = request.form.get("boekje")
         if not boekje:
             return apology("Must provide book info", 400)
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
+        db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status="TODO")
 
         return redirect("/")
 
