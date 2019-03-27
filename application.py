@@ -16,9 +16,6 @@ def index():
     todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO'")
     return render_template("index.html", todobooks=todobooks)
 
-    action
-
-
 # Load the books (disabled in January)
 # @app.route("/loadbooks")
 # def loadbooks():
