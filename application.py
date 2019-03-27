@@ -43,14 +43,11 @@ def index():
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        action = "add"
         boekje = request.form.get("boekje")
         print(boekje)
-        if not boekje:
-            return apology("Must provide book info", 400)
         db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status='TODO')
 
-        return redirect("/add")
+        return redirect("/")
 
     else:
         return render_template("add.html")
