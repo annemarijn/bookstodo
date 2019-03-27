@@ -16,6 +16,8 @@ def index():
     todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO'")
     return render_template("index.html", todobooks=todobooks)
 
+    action
+
 
 # Load the books (disabled in January)
 # @app.route("/loadbooks")
@@ -46,9 +48,9 @@ def add():
         print(boekje)
         if not boekje:
             return apology("Must provide book info", 400)
-        db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status="TODO")
+        db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status='TODO')
 
-        return redirect("/")
+        return redirect("/add")
 
     else:
         return render_template("add.html")
