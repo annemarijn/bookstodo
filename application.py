@@ -37,6 +37,15 @@ def index():
 
 #   return redirect("/")
 
+# Adding books manually
+@app.route("/add")
+def add():
+    if request.method == "POST":
+        boekje = request.form.get("boekje")
+
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
+
+    return redirect("/")
 
 # Removing books from the to-do list
 @app.route("/done")

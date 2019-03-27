@@ -20,6 +20,12 @@
 </div>
 
 <div class="main">
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="boekje" placeholder="Add book manually" type="text"/>
+        </div>
+    </form>
+
     <ul id="booklist" style="list-style-type:none">
 
         {% for todobook in todobooks %}
