@@ -42,7 +42,7 @@ def add():
     if request.method == "POST":
         boekje = request.form.get("boekje")
         print(boekje)
-        db.execute("INSERT INTO books (BOOKINFO, STATUS) VALUES (:boekje, :status)", boekje=boekje, status='TODO')
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
 
         return redirect("/")
 
