@@ -41,7 +41,7 @@ def index():
 def add():
     if request.method == "POST":
         bookinfo = request.form.get("bookinfo")
-        print(boekje)
+        print(bookinfo)
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
         return redirect("/")
