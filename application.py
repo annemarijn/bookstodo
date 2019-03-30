@@ -14,7 +14,6 @@ db = SQL("postgres://abuaoqsgbmmiin:ab4016489152edd9bb6b0cd82b0779ffd00e176affc1
 @app.route("/", methods=["GET", "POST"])
 def index():
     if request.method == "POST":
-        action = add
         bookinfo = request.form.get("bookinfo")
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
