@@ -40,9 +40,9 @@ def index():
 @app.route("/add", methods=["GET", "POST"])
 def add():
     if request.method == "POST":
-        boekje = request.form.get("boekje")
+        bookinfo = request.form.get("bookinfo")
         print(boekje)
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (:boekje)", boekje=boekje)
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
         return redirect("/")
 
