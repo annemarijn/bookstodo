@@ -13,7 +13,7 @@ db = SQL("postgres://abuaoqsgbmmiin:ab4016489152edd9bb6b0cd82b0779ffd00e176affc1
 # Main (index) page
 @app.route("/")
 def index():
-    todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO'")
+    todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO' order by id DESC")
     return render_template("index.html", todobooks=todobooks)
 
 # Load the books (disabled in January)
