@@ -11,10 +11,18 @@ db = SQL("postgres://abuaoqsgbmmiin:ab4016489152edd9bb6b0cd82b0779ffd00e176affc1
 # db = SQL("sqlite:///books.db")
 
 # Main (index) page
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
-    todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO' order by id DESC")
-    return render_template("index.html", todobooks=todobooks)
+    if request.method == "POST":
+        action = add
+        bookinfo = request.form.get("bookinfo")
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
+
+        return redirect("/")
+
+    else:
+        todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO' order by id DESC")
+        return render_template("index.html", todobooks=todobooks)
 
 # Load the books (disabled in January)
 # @app.route("/loadbooks")
@@ -37,17 +45,17 @@ def index():
 #   return redirect("/")
 
 # Adding books manually
-@app.route("/add", methods=["GET", "POST"])
-def add():
-    if request.method == "POST":
-        bookinfo = request.form.get("bookinfo")
-        print(bookinfo)
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
+# @app.route("/add", methods=["GET", "POST"])
+# def add():
+#  if request.method == "POST":
+#       bookinfo = request.form.get("bookinfo")
+#       print(bookinfo)
+#       db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
-        return redirect("/")
+#       return redirect("/")
 
-    else:
-        return render_template("add.html")
+#   else:
+#       return render_template("add.html")
 
 # Removing books from the to-do list
 @app.route("/done")
