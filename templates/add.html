@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Add
+{% endblock %}
+
+{% block main %}
+<body>
+<div class="navbar">
+    <ul>
+      <li><a href="/">Index</a></li>
+      <li><a href="/Anne">Anne</a></li>
+      <li><a href="/Eline">Eline</a></li>
+      <li><a href="/Rene">René</a></li>
+      <li><a href="/Stage">Stage</a></li>
+      <li style="float:right"><a href="/deletedbooks">Deleted</a></li>
+      <li style="float:right"><a href="/donebooks">Done</a></li>
+      <li style="float:right"><a class="active" href="/add">Add</a></li>
+    </ul>
+</div>
+
+<div>
+    <form action="/add" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="bookinfo" placeholder="Add book manually" type="text"/>
+            <button class="btn btn-primary" type="submit">Add</button>
+</div>
+
+</body>
+
+{% endblock %}

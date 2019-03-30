@@ -11,19 +11,22 @@ db = SQL("postgres://abuaoqsgbmmiin:ab4016489152edd9bb6b0cd82b0779ffd00e176affc1
 # db = SQL("sqlite:///books.db")
 
 # Main (index) page
-@app.route("/", methods=["GET", "POST"])
+@app.route("/")
 def index():
-    # add books manually
+    todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO' order by id DESC")
+    return render_template("index.html", todobooks=todobooks)
+
+# Add books manually
+@app.route("/add", methods=["GET", "POST"])
+def add():
     if request.method == "POST":
         bookinfo = request.form.get("bookinfo")
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
         return redirect("/")
 
-    # just display the index page with the full to do list
     else:
-        todobooks = db.execute("SELECT * FROM books WHERE STATUS = 'TODO' order by id DESC")
-        return render_template("index.html", todobooks=todobooks)
+        return render_template("add.html")
 
 # Load the books (disabled in January)
 # @app.route("/loadbooks")
