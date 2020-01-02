@@ -32,13 +32,13 @@ def add():
 @app.route("/loadbooks")
 def loadbooks():
 #  Linguistlist:
-   page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2019&order=desc")
-   tree = html.fromstring(page.content)
-   boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
+    page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2019&order=desc")
+    tree = html.fromstring(page.content)
+    boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
-   for boekje in boekjes:
-       db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
-   return redirect("/")
+    for boekje in boekjes:
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+    return redirect("/")
 
 # Removing books from the to-do list
 @app.route("/done")
