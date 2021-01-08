@@ -24,7 +24,6 @@
  <ul id="booklist" style="list-style-type:none">
         {% for todobook in todobooks %}
         <li><a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ todobook["bookinfo"]}} </a>
-        <a href="{{ url_for('delete', bookId=todobook["id"], status="Rene") }}"><span>Delete &ensp;</span></a>
         <a href="{{ url_for('unassign', bookId=todobook["id"], status="Rene") }}"><span>Unassign &ensp;</span></a>
         <a href="{{ url_for('done', bookId=todobook["id"], status="Rene") }}"><span>Done &ensp;</span></a>
         </li>

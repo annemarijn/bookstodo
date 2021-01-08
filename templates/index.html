@@ -27,7 +27,6 @@
         {% for todobook in todobooks %}
         <li>
         <a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ todobook["bookinfo"]}}</class> </a>
-        <a href="{{ url_for('delete', bookId=todobook["id"]) }}"><span>Delete &ensp;</span></a>
         <a href="{{ url_for('done', bookId=todobook["id"]) }}"><span>Done &ensp;</span></a>
         <a href="{{ url_for('assignStage', bookId=todobook["id"]) }}"><span> Stage &ensp;</span></a>
         <a href="{{ url_for('assignRene', bookId=todobook["id"]) }}"><span> René &ensp;</span></a>
