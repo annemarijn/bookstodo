@@ -28,11 +28,11 @@ def add():
     else:
         return render_template("add.html")
 
-# Load the books (currently set to 2019 & disabled; turn on in January 2020)
+# Load the books (currently set to 2020)
 @app.route("/loadbooks")
 def loadbooks():
 #  Linguistlist:
-    page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2019&order=desc")
+    page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2020&order=desc")
     tree = html.fromstring(page.content)
     boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
