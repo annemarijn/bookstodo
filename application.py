@@ -71,6 +71,7 @@ def donebooks():
     donebooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DONE'")
     return render_template("done.html", donebooks=donebooks)
 
+# Empty the "done" list
 @app.route("/emptydonelist")
 def emptydonelist():
     db.execute("DELETE FROM books WHERE STATUS = 'DONE'")
@@ -110,6 +111,12 @@ def delete():
 def deletedbooks():
     deletedbooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DELETE'")
     return render_template("deleted.html", deletedbooks=deletedbooks)
+
+# Empty the "deleted" list
+@app.route("/emptydeletedlist")
+def emptydeletedlist():
+    db.execute("DELETE FROM books WHERE STATUS = 'DELETE'")
+    return redirect("/deletedbooks")
 
 # Reset books to not done
 @app.route("/reset")
