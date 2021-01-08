@@ -28,7 +28,7 @@ def add():
     else:
         return render_template("add.html")
 
-# Load the books (currently set to 2020)
+# Load the books (currently set to 2020; to use, navigate to todobooks.herokuapp.com/loadbooks)
 @app.route("/loadbooks")
 def loadbooks():
 #  Linguistlist:
@@ -69,6 +69,11 @@ def done():
 @app.route("/donebooks")
 def donebooks():
     donebooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DONE'")
+    return render_template("done.html", donebooks=donebooks)
+
+@app.route("/emptydonelist")
+def emptydonelist():
+    emptydonelist = db.execute("DELETE FROM books WHERE STATUS = 'DONE'")
     return render_template("done.html", donebooks=donebooks)
 
 # Delete irrelevant books from the list
