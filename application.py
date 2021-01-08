@@ -77,61 +77,15 @@ def emptydonelist():
     db.execute("DELETE FROM books WHERE STATUS = 'DONE'")
     return redirect("/donebooks")
 
-# Delete irrelevant books from the list
-@app.route("/delete")
-def delete():
-    bookId = request.args.get("bookId")
-    status = request.args.get("status")
-
-    if status=="Anne":
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Anne")
-
-    if status=="Eline":
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Eline")
-
-    if status=="Rene":
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Rene")
-
-    if status=="Stage":
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Stage")
-
-    if status=="done":
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/donebooks")
-
-    else:
-        db.execute("UPDATE books SET STATUS = 'DELETE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/")
-
-@app.route("/deletedbooks")
-def deletedbooks():
-    deletedbooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DELETE'")
-    return render_template("deleted.html", deletedbooks=deletedbooks)
-
-# Empty the "deleted" list
-@app.route("/emptydeletedlist")
-def emptydeletedlist():
-    db.execute("DELETE FROM books WHERE STATUS = 'DELETE'")
-    return redirect("/deletedbooks")
-
 # Reset books to not done
 @app.route("/reset")
 def reset():
     bookId = request.args.get("bookId")
     status = request.args.get("status")
 
-    if status=="delete":
-        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/deletedbooks")
-
-    else:
+    if status=="done":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
         return redirect("/donebooks")
-
 
 # Unassign books
 @app.route("/unassign")
