@@ -74,7 +74,7 @@ def donebooks():
 @app.route("/emptydonelist")
 def emptydonelist():
     db.execute("DELETE FROM books WHERE STATUS = 'DONE'")
-    return render_template("done.html", donebooks=donebooks)
+    return redirect("/donebooks")
 
 # Delete irrelevant books from the list
 @app.route("/delete")
