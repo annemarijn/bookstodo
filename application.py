@@ -83,9 +83,8 @@ def reset():
     bookId = request.args.get("bookId")
     status = request.args.get("status")
 
-    if status=="done":
-        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/donebooks")
+    db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+    return redirect("/donebooks")
 
 # Unassign books
 @app.route("/unassign")
