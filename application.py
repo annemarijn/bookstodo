@@ -68,7 +68,7 @@ def done():
 
 @app.route("/donebooks")
 def donebooks():
-    donebooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DONE'")
+    donebooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'DONE' order by id DESC")
     return render_template("done.html", donebooks=donebooks)
 
 # Empty the "done" list
