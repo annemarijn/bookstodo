@@ -7,7 +7,7 @@ from cs50 import SQL
 
 app = Flask(__name__)
 
-db = SQL("postgres://jtstaetfzxdvyf:dec4dd601917a0558fa81fb60d4bcb46a02262f635427b83e30d71ad856671ad@ec2-34-255-32-3.eu-west-1.compute.amazonaws.com:5432/d5uulbov6407ve")
+db = SQL("postgres://rjfpfbvdkxnjmu:276f12d333a9c343d2f6eb7fe0c4e5d3c418314c58ef599179af1ee669dff47a@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d37466ihf7703p")
 # db = SQL("sqlite:///books.db")
 
 # Main (index) page
@@ -31,13 +31,18 @@ def add():
 # Load the books (currently set to 2021; to use, navigate to bookstodo.herokuapp.com/loadbooks)
 @app.route("/loadbooks")
 def loadbooks():
-#  Linguistlist:
+    # Linguistlist:
     page = requests.get("https://linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2021&order=desc")
     tree = html.fromstring(page.content)
     boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
     for boekje in boekjes:
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+
+    # PWSZ
+    page = requests.get("https://www.pwsz-ns.edu.pl/bip/63-pwsz/uczelnia/wydawnictwo-naukowe/publikacje")
+    tree = html.fromstring(page.content)
+    pwszboekjes = tree.xpath()
     return redirect("/")
 
 # Removing books from the to-do list
