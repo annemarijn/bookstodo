@@ -5,10 +5,11 @@ import requests
 
 from cs50 import SQL
 
+import os
+
 app = Flask(__name__)
 
-db = SQL("postgres://rjfpfbvdkxnjmu:276f12d333a9c343d2f6eb7fe0c4e5d3c418314c58ef599179af1ee669dff47a@ec2-52-212-228-71.eu-west-1.compute.amazonaws.com:5432/d37466ihf7703p")
-# db = SQL("sqlite:///books.db")
+db = SQL(os.environ["DATABASE_URL"])
 
 # Main (index) page
 @app.route("/")
