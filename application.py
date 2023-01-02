@@ -40,10 +40,6 @@ def loadbooks():
     for boekje in boekjes:
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    # PWSZ
-    page = requests.get("https://www.pwsz-ns.edu.pl/bip/63-pwsz/uczelnia/wydawnictwo-naukowe/publikacje")
-    tree = html.fromstring(page.content)
-    pwszboekjes = tree.xpath()
     return redirect("/")
 
 # Removing books from the to-do list
