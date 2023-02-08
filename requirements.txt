@@ -19,7 +19,7 @@ check50==3.3.3
 click==7.1.2
 colorama==0.4.3
 compare50==1.2.4
-cryptography==3.4.8
+cryptography==39.0.1
 cs50==7.0.2
 cssselect2==0.4.1
 cycler==0.10.0
