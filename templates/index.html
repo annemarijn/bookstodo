@@ -12,8 +12,8 @@
       <li><a class="active" href="/">Index</a></li>
       <li><a href="/Anne">Anne</a></li>
       <li><a href="/Eline">Eline</a></li>
-      <li><a href="/Rene">René</a></li>
-      <li><a href="/Stage">Stage</a></li>
+      <li><a href="/Evgeniia">Evgeniia</a></li>
+      <li><a href="/Jiang">Jiang</a></li>
       <li style="float:right"><a href="/donebooks">Done</a></li>
       <li style="float:right"><a href="/add">Add</a></li>
     </ul>
@@ -28,8 +28,8 @@
         <li>
         <a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ todobook["bookinfo"]}}</class> </a>
         <a href="{{ url_for('done', bookId=todobook["id"]) }}"><span>Done &ensp;</span></a>
-        <a href="{{ url_for('assignStage', bookId=todobook["id"]) }}"><span> Stage &ensp;</span></a>
-        <a href="{{ url_for('assignRene', bookId=todobook["id"]) }}"><span> René &ensp;</span></a>
+        <a href="{{ url_for('assignJiang', bookId=todobook["id"]) }}"><span> Jiang &ensp;</span></a>
+        <a href="{{ url_for('assignEvgeniia', bookId=todobook["id"]) }}"><span> Evgeniia &ensp;</span></a>
         <a href="{{ url_for('assignEline', bookId=todobook["id"]) }}"><span> Eline &ensp;</span></a>
         <a href="{{ url_for('assignAnne', bookId=todobook["id"]) }}"><span> Anne &ensp;</span></a>
 

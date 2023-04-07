@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Stage
+    Jiang
 {% endblock %}
 
 {% block main %}
@@ -11,8 +11,8 @@
       <li><a href="/">Index</a></li>
       <li><a href="/Anne">Anne</a></li>
       <li><a href="/Eline">Eline</a></li>
-      <li><a href="/Rene">René</a></li>
-      <li><a class="active" href="/Stage">Stage</a></li>
+      <li><a href="/Evgeniia">Evgeniia</a></li>
+      <li><a class="active" href="/Jiang">Jiang</a></li>
       <li style="float:right"><a href="/donebooks">Done</a></li>
       <li style="float:right"><a href="/add">Add</a></li>
     </ul>
@@ -22,8 +22,8 @@
  <ul id="booklist" style="list-style-type:none">
         {% for todobook in todobooks %}
         <li><a href="http://www.google.com/search?q={{ todobook["bookinfo"]}}" style="color: #000000;" target="_blank"><text class="overflow">{{ todobook["bookinfo"]}} </a>
-        <a href="{{ url_for('unassign', bookId=todobook["id"], status="Stage") }}"><span>Unassign &ensp;</span></a>
-        <a href="{{ url_for('done', bookId=todobook["id"], status="Stage") }}"><span>Done &ensp;</span></a>
+        <a href="{{ url_for('unassign', bookId=todobook["id"], status="Jiang") }}"><span>Unassign &ensp;</span></a>
+        <a href="{{ url_for('done', bookId=todobook["id"], status="Jiang") }}"><span>Done &ensp;</span></a>
         </li>
         {% endfor %}
     </ul>
