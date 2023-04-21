@@ -82,7 +82,7 @@ six==1.16.0
 sortedcontainers==2.4.0
 soupsieve==2.2.1
 SQLAlchemy==1.4.23
-sqlparse==0.4.2
+sqlparse==0.4.4
 tenacity==8.0.1
 termcolor==1.1.0
 tinycss2==1.1.0
