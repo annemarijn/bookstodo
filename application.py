@@ -64,6 +64,10 @@ def done():
         db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
         return redirect("/Jiang")
     
+    if status=="Nina":
+        db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/Nina")
+    
     if status=="nextyear":
         db.execute("UPDATE books SET STATUS= 'NEXTYEAR' WHERE ID = :bookId", bookId=bookId)
         return redirect("/nextyear")
@@ -114,6 +118,10 @@ def unassign():
     if status=="Jiang":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
         return redirect("/Jiang")
+
+    if status=="Nina":
+        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/Nina")
     
     if status=="nextyear":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
@@ -148,6 +156,13 @@ def assignJiang():
 
     return redirect("/")
 
+@app.route("/assignNina")
+def assignNina():
+    bookId = request.args.get("bookId")
+    db.execute("UPDATE books SET STATUS = 'NINA' WHERE ID = :bookId", bookId=bookId)
+
+    return redirect("/")
+
 @app.route("/assignnextyear")
 def assignnextyear():
     bookId = request.args.get("bookId")
@@ -178,6 +193,12 @@ def Evgeniia():
 def Jiang():
     todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'JIANG'")
     return render_template("Jiang.html", todobooks=todobooks)
+
+# Books assigned to Nina
+@app.route("/Nina")
+def Nina():
+    todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'NINA'")
+    return render_template("Nina.html", todobooks=todobooks)
 
 # Books assigned to next year
 @app.route("/nextyear")
