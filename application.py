@@ -29,13 +29,13 @@ def add():
     else:
         return render_template("add.html")
 
-# Load the books (currently set to 2022; to use, navigate to bookstodo.herokuapp.com/loadbooks)
+# Load the books (currently set to 2023; to use, navigate to bookstodo.herokuapp.com/loadbooks)
 @app.route("/loadbooks")
 def loadbooks():
     # Linguistlist:
-    page = requests.get("https://linguistlist.org/issues/?query=&topic=Books&startdate=12%2F31%2F2022&enddate=01%2F01%2F2024")
+    page = requests.get("https://old.linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2023")
     tree = html.fromstring(page.content)
-    boekjes = tree.xpath('//ul/li[@class="panel-title"]/a/text()')
+    boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
     for boekje in boekjes:
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
