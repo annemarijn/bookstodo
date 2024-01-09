@@ -33,7 +33,7 @@ def add():
 @app.route("/loadbooks")
 def loadbooks():
     # Linguistlist:
-    page = requests.get("https://old.linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2022")
+    page = requests.get("https://linguistlist.org/issues/?query=&topic=Books&startdate=12%2F31%2F2022&enddate=01%2F01%2F2024")
     tree = html.fromstring(page.content)
     boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
 
