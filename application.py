@@ -33,9 +33,9 @@ def add():
 @app.route("/loadbooks")
 def loadbooks():
     # Linguistlist:
-    page = requests.get("https://old.linguistlist.org/issues/issues-by-topic.cfm?topic=2&y=2023")
+    page = requests.get("https://linguistlist.org/issues/?query=&topic=Books&startdate=12%2F31%2F2022&enddate=")
     tree = html.fromstring(page.content)
-    boekjes = tree.xpath('//ul/li[@class="issue"]/a/text()')
+    boekjes = tree.xpath('//div/h4[@class="panel-title"]/a/text()')
 
     for boekje in boekjes:
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
