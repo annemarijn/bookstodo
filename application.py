@@ -35,7 +35,7 @@ def loadbooks():
     # Linguistlist:
     page = requests.get("https://linguistlist.org/issues/?query=&topic=Books&startdate=12%2F31%2F2022&enddate=")
     tree = html.fromstring(page.content)
-    boekjes = tree.xpath('//div/h4[@class="panel-title"]/a/text()')
+    boekjes = tree.xpath('//h4[@class="panel-title"]/a/text()')
 
     for boekje in boekjes:
         db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
