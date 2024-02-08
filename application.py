@@ -1,7 +1,4 @@
-from flask import Flask, render_template, redirect, request, session
-
-from lxml import html
-import requests
+from flask import Flask, render_template, redirect, request
 
 from cs50 import SQL
 
@@ -29,7 +26,7 @@ def add():
     else:
         return render_template("add.html")
 
-# Load the books (currently set to 2023; to use, navigate to bookstodo.herokuapp.com/loadbooks)
+# Load the books (currently set to 2023; to use, navigate to bookstodo.herokuapp.com/loadbooks) use lxml
 # @app.route("/loadbooks")
 # def loadbooks():
 
