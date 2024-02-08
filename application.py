@@ -30,46 +30,46 @@ def add():
         return render_template("add.html")
 
 # Load the books (currently set to 2023; to use, navigate to bookstodo.herokuapp.com/loadbooks)
-@app.route("/loadbooks")
-def loadbooks():
+# @app.route("/loadbooks")
+# def loadbooks():
 
-    def scanPage(url):
+    # def scanPage(url):
         # Linguistlist:
-        page = requests.get(url)
-        tree = html.fromstring(page.content)
-        boekjes = tree.xpath('//h4[@class="panel-title"]/a/text()')
+        # page = requests.get(url)
+        # tree = html.fromstring(page.content)
+        # boekjes = tree.xpath('//h4[@class="panel-title"]/a/text()')
 
-        for boekje in boekjes:
-            db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+        # for boekje in boekjes:
+            # db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    scanPage("https://linguistlist.org/issues/?page=2&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=3&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=4&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=5&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=6&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=7&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=8&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=9&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=10&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=11&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=12&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=13&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=14&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=15&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=16&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=17&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=18&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=19&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=20&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=21&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=22&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=23&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=24&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=25&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=26&topic=Books&startdate=12/31/2022")
-    scanPage("https://linguistlist.org/issues/?page=27&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=2&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=3&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=4&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=5&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=6&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=7&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=8&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=9&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=10&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=11&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=12&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=13&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=14&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=15&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=16&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=17&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=18&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=19&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=20&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=21&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=22&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=23&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=24&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=25&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=26&topic=Books&startdate=12/31/2022")
+    # scanPage("https://linguistlist.org/issues/?page=27&topic=Books&startdate=12/31/2022")
 
-    return redirect("/")
+    # return redirect("/")
 
 # Removing books from the to-do list
 @app.route("/done")
@@ -88,6 +88,10 @@ def done():
     if status=="Andrew":
         db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
         return redirect("/Andrew")
+    
+    if status=="Bjorn":
+        db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/Bjorn")
 
     if status=="Jiang":
         db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
@@ -139,6 +143,10 @@ def unassign():
     if status=="Andrew":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
         return redirect("/Andrew")
+    
+    if status=="Bjorn":
+        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
+        return redirect("/Bjorn")
 
     if status=="Jiang":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
@@ -169,6 +177,11 @@ def assignAndrew():
     db.execute("UPDATE books SET STATUS = 'ANDREW' WHERE ID = :bookId", bookId=bookId)
 
     return redirect("/")
+
+@app.route("/assignBjorn")
+def assignBjorn():
+    bookId = request.args.get("bookId")
+    db.execute("UPDATE books SET STATUS = 'BJORN' WHERE ID = :bookId", bookId=bookId)
 
 @app.route("/assignJiang")
 def assignJiang():
@@ -201,6 +214,12 @@ def Eline():
 def Andrew():
     todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'ANDREW'")
     return render_template("Andrew.html", todobooks=todobooks)
+
+# Books assigned to Bjorn
+@app.route("/Bjorn")
+def Bjorn():
+    todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'BJORN'")
+    return render_template("Bjorn.html", todobooks=todobooks)
 
 # Books assigned to Jiang
 @app.route("/Jiang")
