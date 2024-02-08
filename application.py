@@ -180,6 +180,8 @@ def assignBjorn():
     bookId = request.args.get("bookId")
     db.execute("UPDATE books SET STATUS = 'BJORN' WHERE ID = :bookId", bookId=bookId)
 
+    return redirect("/")
+
 @app.route("/assignJiang")
 def assignJiang():
     bookId = request.args.get("bookId")
