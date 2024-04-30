@@ -19,7 +19,7 @@ def index():
 def add():
     if request.method == "POST":
         bookinfo = request.form.get("bookinfo")
-        db.execute("INSERT INTO books (BOOKINFO) VALUES (bookinfo)", bookinfo=bookinfo)
+        db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=bookinfo)
 
         return redirect("/")
 
