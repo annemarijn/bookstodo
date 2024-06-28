@@ -95,7 +95,7 @@ def done():
         return redirect("/Jiang")
     
     if status=="nextyear":
-        db.execute("UPDATE books SET STATUS= 'NEXTYEAR' WHERE ID = :bookId", bookId=bookId)
+        db.execute("UPDATE books SET STATUS= 'DONE' WHERE ID = :bookId", bookId=bookId)
         return redirect("/nextyear")
 
     else:
