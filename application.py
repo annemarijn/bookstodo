@@ -26,45 +26,40 @@ def add():
     else:
         return render_template("add.html")
 
-# Load the books (currently set to 2023; to use, navigate to bookstodo.herokuapp.com/loadbooks) use lxml
-# @app.route("/loadbooks")
-# def loadbooks():
+# Load the books (currently set to 2024; to use, navigate to bookstodo.herokuapp.com/loadbooks) use lxml
+@app.route("/loadbooks")
+def loadbooks():
 
-    # def scanPage(url):
+    def scanPage(url):
         # Linguistlist:
-        # page = requests.get(url)
-        # tree = html.fromstring(page.content)
-        # boekjes = tree.xpath('//h4[@class="panel-title"]/a/text()')
+        page = requests.get(url)
+        tree = html.fromstring(page.content)
+        boekjes = tree.xpath('//h4[@class="panel-title"]/a/text()')
 
-        # for boekje in boekjes:
-            # db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
+        for boekje in boekjes:
+            db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    # scanPage("https://linguistlist.org/issues/?page=2&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=3&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=4&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=5&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=6&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=7&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=8&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=9&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=10&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=11&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=12&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=13&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=14&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=15&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=16&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=17&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=18&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=19&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=20&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=21&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=22&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=23&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=24&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=25&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=26&topic=Books&startdate=12/31/2022")
-    # scanPage("https://linguistlist.org/issues/?page=27&topic=Books&startdate=12/31/2022")
+    scanPage("https://linguistlist.org/issues/?page=2&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=3&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=4&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=5&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=6&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=7&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=8&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=9&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=10&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=11&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=12&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=13&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=14&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=15&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=16&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=17&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=18&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=19&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=20&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=21&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=22&topic=Books&startdate=12/31/2023")
 
     # return redirect("/")
 
