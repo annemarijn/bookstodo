@@ -4,6 +4,10 @@ from cs50 import SQL
 
 import os
 
+import requests
+
+from lxml import html
+
 app = Flask(__name__)
 
 db = SQL(os.environ["DATABASE_URL"])
