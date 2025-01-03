@@ -43,12 +43,7 @@ def loadbooks():
         for boekje in boekjes:
             db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    # for 2024 could only import 4 pages at a time!
-    scanPage("https://linguistlist.org/issues/?page=12&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=13&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=14&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=15&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=16&topic=Books&startdate=12/31/2023")
+    # for 2024 could only import 4 or sometimes 5 pages at a time!
     scanPage("https://linguistlist.org/issues/?page=17&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=18&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=19&topic=Books&startdate=12/31/2023")
