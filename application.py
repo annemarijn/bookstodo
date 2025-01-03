@@ -43,10 +43,7 @@ def loadbooks():
         for boekje in boekjes:
             db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    scanPage("https://linguistlist.org/issues/?page=2&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=3&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=4&topic=Books&startdate=12/31/2023")
-    scanPage("https://linguistlist.org/issues/?page=5&topic=Books&startdate=12/31/2023")
+    scanPage("https://linguistlist.org/issues/?page=1&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=6&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=7&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=8&topic=Books&startdate=12/31/2023")
