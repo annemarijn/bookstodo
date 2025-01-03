@@ -31,8 +31,8 @@ def add():
         return render_template("add.html")
 
 # Load the books (currently set to 2024; to use, navigate to bookstodo.herokuapp.com/loadbooks) use lxml
-@app.route("/loadbooks")
-def loadbooks():
+# @app.route("/loadbooks")
+# def loadbooks():
 
     def scanPage(url):
         # Linguistlist:
