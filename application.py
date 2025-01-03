@@ -65,7 +65,7 @@ def loadbooks():
     scanPage("https://linguistlist.org/issues/?page=21&topic=Books&startdate=12/31/2023")
     scanPage("https://linguistlist.org/issues/?page=22&topic=Books&startdate=12/31/2023")
 
-    # return redirect("/")
+    return redirect("/")
 
 # Removing books from the to-do list
 @app.route("/done")
