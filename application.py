@@ -31,8 +31,8 @@ def add():
         return render_template("add.html")
 
 # Load the books (currently set to 2025; to use, navigate to bookstodo.herokuapp.com/loadbooks) use lxml
-@app.route("/loadbooks")
-def loadbooks():
+# @app.route("/loadbooks")
+# def loadbooks():
 
     def scanPage(url):
         # Linguistlist:
@@ -43,7 +43,7 @@ def loadbooks():
         for boekje in boekjes:
             db.execute("INSERT INTO books (BOOKINFO) VALUES (:bookinfo)", bookinfo=boekje.replace("Books: ", ""))
 
-    # for 2024 could only import 4 or sometimes 5 pages at a time!
+    # for 2025 I did 5-6 at a time, haven't tried more since in 2024 could do max. 5
     scanPage("https://linguistlist.org/issues/?page=6&topic=Books")
     scanPage("https://linguistlist.org/issues/?page=5&topic=Books")
     scanPage("https://linguistlist.org/issues/?page=4&topic=Books")
