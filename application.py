@@ -78,10 +78,6 @@ def done():
     if status=="Evgeniia":
         db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
         return redirect("/Evgeniia")
-
-    if status=="Jiang":
-        db.execute("UPDATE books SET STATUS = 'DONE' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Jiang")
     
     if status=="nextyear":
         db.execute("UPDATE books SET STATUS= 'DONE' WHERE ID = :bookId", bookId=bookId)
@@ -136,11 +132,7 @@ def unassign():
 
     if status=="Evgeniia":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Evgeniia")    
-
-    if status=="Jiang":
-        db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
-        return redirect("/Jiang")
+        return redirect("/Evgeniia")
     
     if status=="nextyear":
         db.execute("UPDATE books SET STATUS = 'TODO' WHERE ID = :bookId", bookId=bookId)
@@ -182,13 +174,6 @@ def assignEvgeniia():
                
     return redirect("/")
 
-@app.route("/assignJiang")
-def assignJiang():
-    bookId = request.args.get("bookId")
-    db.execute("UPDATE books SET STATUS = 'JIANG' WHERE ID = :bookId", bookId=bookId)
-
-    return redirect("/")
-
 @app.route("/assignnextyear")
 def assignnextyear():
     bookId = request.args.get("bookId")
@@ -225,12 +210,6 @@ def Bjorn():
 def Evgeniia():
     todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'EVGENIIA'")
     return render_template("Evgeniia.html", todobooks=todobooks)
-
-# Books assigned to Jiang
-@app.route("/Jiang")
-def Jiang():
-    todobooks = db.execute("SELECT ID, BOOKINFO FROM books WHERE STATUS = 'JIANG'")
-    return render_template("Jiang.html", todobooks=todobooks)
 
 # Books assigned to next year
 @app.route("/nextyear")
